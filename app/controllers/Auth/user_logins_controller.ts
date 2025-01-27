@@ -4,7 +4,7 @@ import hash from '@adonisjs/core/services/hash'
 
 export default class UserLoginsController {
 
-	async attempt({ request, response, inertia }: HttpContext) {
+	async attempt({ request, response, auth }: HttpContext) {
 
 		const { email, password } = request.only(['email', 'password'])
 
@@ -26,7 +26,14 @@ export default class UserLoginsController {
 		if (!isPasswordValid) {
 			return response.abort('Invalid credentials')
 		}
-		return response.abort('Success!')
+
+		await auth.use('web').login(user)
+
+		/**
+		 * Step 4: Send them to a protected route
+		 */
+		response.redirect('/dashboard')
+
 
 	}
 
