@@ -1,6 +1,6 @@
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
-import { defaultTheme } from './vuetify-theme'
+import { defaultTheme } from './vuetify_theme'
 
 export const vuetify = createVuetify({
   components,

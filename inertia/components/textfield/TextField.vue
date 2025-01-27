@@ -5,6 +5,7 @@ interface Props {
   modelValue?: string
   primary?: boolean
   label?: string
+  errors?: string|string[]|null
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -18,7 +19,7 @@ const { modelValue: input } = useVModels(props, emit)
 </script>
 
 <template>
-  <VTextField :label v-model="input" />
+  <VTextField :label v-model="input" :error-messages="errors" />
 </template>
 
 <style lang="scss">

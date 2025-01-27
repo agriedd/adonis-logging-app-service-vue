@@ -8,6 +8,12 @@ import TypographyLarge from '~/components/typography/TypographyLarge.vue'
 import TypographyMuted from '~/components/typography/TypographyMuted.vue'
 import TypographySmall from '~/components/typography/TypographySmall.vue'
 
+interface Props {
+  errors?: string
+}
+
+const props = defineProps<Props>()
+
 const form = useForm<{
   email: string
   password: string
@@ -63,7 +69,7 @@ const submit = () => {
         <div class="p-6 lg:p-10 flex gap-3 flex-col">
           <div>
             <TypographySmall class="mb-2"> Email </TypographySmall>
-            <TextField class="rounded-md" type="email" placeholder="Email" v-model="form.email" />
+            <TextField class="rounded-md" type="email" placeholder="Email" v-model="form.email" :errors="form.errors.email" />
           </div>
           <div>
             <TypographySmall class="mb-2"> Password </TypographySmall>
@@ -72,6 +78,7 @@ const submit = () => {
               placeholder="Password"
               type="password"
               v-model="form.password"
+              :errors="form.errors.password"
             />
           </div>
           <div class="pt-4">

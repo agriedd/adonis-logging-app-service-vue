@@ -1,39 +1,54 @@
 import User from '#models/user'
+import { userLogin } from '#validators/Auth/user_login'
+import { createError } from '@adonisjs/core/exceptions'
 import type { HttpContext } from '@adonisjs/core/http'
 import hash from '@adonisjs/core/services/hash'
 
 export default class UserLoginsController {
-  async attempt({ request, response, auth }: HttpContext) {
-    const { email, password } = request.only(['email', 'password'])
+	async attempt({ request, response, auth, inertia }: HttpContext) {
 
-    /**
-     * Find a user by email. Return error if a user does
-     * not exists
-     */
-    const user = await User.findBy('email', email)
+		const payload = await request.validateUsing(userLogin)
 
-    if (!user) {
-      return response.abort('404 Invalid credentials')
-    }
+		/**
+		 * Find a user by email. Return error if a user does
+		 * not exists
+		 */
+		const user = await User.findBy('email', payload.email)
 
-    /**
-     * Verify the password using the hash service
-     */
-    const isPasswordValid = await hash.verify(user.password, password)
+		if (!user) {
+			return inertia.render("home", {
+				errors: {
+					email: [
+						"Invalid credentials"
+					]
+				}
+			})
+		}
 
-    if (!isPasswordValid) {
-      return response.abort('Invalid credentials')
-    }
+		/**
+		 * Verify the password using the hash service
+		 */
+		const isPasswordValid = await hash.verify(user.password, payload.password)
 
-    await auth.use('web').login(user)
+		if (!isPasswordValid) {
+			return inertia.render("home", {
+				errors: {
+					email: [
+						"Invalid credentials"
+					]
+				}
+			})
+		}
 
-    /**
-     * Step 4: Send them to a protected route
-     */
-    response.redirect('/dashboard')
-  }
+		await auth.use('web').login(user)
 
-  async login({ response }: HttpContext) {
-    response.redirect('/')
-  }
+		/**
+		 * Step 4: Send them to a protected route
+		 */
+		response.redirect('/dashboard')
+	}
+
+	async login({ response }: HttpContext) {
+		response.redirect('/')
+	}
 }
