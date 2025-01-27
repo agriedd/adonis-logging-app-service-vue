@@ -9,20 +9,26 @@ import TypographyLarge from '~/components/typography/TypographyLarge.vue';
 import TypographyMuted from '~/components/typography/TypographyMuted.vue';
 import TypographySmall from '~/components/typography/TypographySmall.vue';
 
-
 const form = useForm<{
   email: string,
   password: string,
 }>({
-  email: "",
-  password: "",
+  email: "admin@logger.com",
+  password: "password",
 })
 
 const loading = shallowRef(false)
 
 const submit = () => {
 
-  // form.post()
+  form.post("/login", {
+    onStart: ()=>{
+      loading.value = true
+    },
+    onFinish: ()=>{
+      loading.value = false
+    }
+  })
 
 }
 

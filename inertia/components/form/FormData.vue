@@ -17,7 +17,7 @@ const submit = (e: Event)=>{
 </script>
 
 <template>
-	<VForm :disabled @submit="submit">
+	<VForm :disabled @submit.prevent="submit">
 		<slot></slot>
 	</VForm>
 </template>
