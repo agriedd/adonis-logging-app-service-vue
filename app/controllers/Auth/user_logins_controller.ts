@@ -1,6 +1,5 @@
 import User from '#models/user'
 import { userLogin } from '#validators/Auth/user_login'
-import { createError } from '@adonisjs/core/exceptions'
 import type { HttpContext } from '@adonisjs/core/http'
 import hash from '@adonisjs/core/services/hash'
 
