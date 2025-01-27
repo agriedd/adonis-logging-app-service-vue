@@ -14,19 +14,13 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const form = useForm<{
-  email: string,
-  password: string,
-}>({
-  email: "admin@logger.com",
-  password: "password",
-})
+const form = useForm<{}>({})
 
 const loading = shallowRef(false)
 
 const submit = () => {
 
-  form.post("/login", {
+  form.delete("/logout", {
     onStart: ()=>{
       loading.value = true
     },

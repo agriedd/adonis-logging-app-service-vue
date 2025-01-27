@@ -37,4 +37,8 @@ export default class UserLoginsController {
 
 	}
 
+	async login({ response }: HttpContext) {
+		response.redirect('/')
+	}
+
 }
