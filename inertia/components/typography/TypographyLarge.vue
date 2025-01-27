@@ -1,9 +1,7 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-	<div class="text-lg font-semibold">
-		<slot></slot>
-	</div>
+  <div class="text-lg font-semibold">
+    <slot></slot>
+  </div>
 </template>

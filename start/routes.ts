@@ -18,20 +18,19 @@ router.on('/').renderInertia('home')
 
 /**
  * Auth
- * 
+ *
  */
 router.post('/login', [UserLoginsController, 'attempt'])
 router.get('/login', [UserLoginsController, 'login'])
 router.delete('/logout', [LogoutsController, 'logout'])
 
-router.group(() => {
-	router.get('/', [DashboardController, 'index'])
-})
-	.prefix("dashboard")
-	.use(
-		middleware.auth({
-			guards: ['web']
-		})
-	)
-
-
+router
+  .group(() => {
+    router.get('/', [DashboardController, 'index'])
+  })
+  .prefix('dashboard')
+  .use(
+    middleware.auth({
+      guards: ['web'],
+    })
+  )

@@ -1,9 +1,7 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-	<h4 class="scroll-m-20 text-xl font-semibold tracking-tight">
-		<slot></slot>
-	</h4>
+  <h4 class="scroll-m-20 text-xl font-semibold tracking-tight">
+    <slot></slot>
+  </h4>
 </template>

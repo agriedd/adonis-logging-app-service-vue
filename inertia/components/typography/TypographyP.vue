@@ -1,9 +1,7 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-	<p class="leading-7 [&:not(:first-child)]:mt-6">
-		<slot></slot>
-	</p>
+  <p class="leading-7 [&:not(:first-child)]:mt-6">
+    <slot></slot>
+  </p>
 </template>
