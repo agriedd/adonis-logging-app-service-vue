@@ -69,7 +69,13 @@ const submit = () => {
         <div class="p-6 lg:p-10 flex gap-3 flex-col">
           <div>
             <TypographySmall class="mb-2"> Email </TypographySmall>
-            <TextField class="rounded-md" type="email" placeholder="Email" v-model="form.email" :errors="form.errors.email" />
+            <TextField
+              class="rounded-md"
+              type="email"
+              placeholder="Email"
+              v-model="form.email"
+              :errors="form.errors.email"
+            />
           </div>
           <div>
             <TypographySmall class="mb-2"> Password </TypographySmall>

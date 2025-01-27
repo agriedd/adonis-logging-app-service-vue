@@ -5,7 +5,7 @@ interface Props {
   modelValue?: string
   primary?: boolean
   label?: string
-  errors?: string|string[]|null
+  errors?: string | string[] | null
 }
 
 const props = withDefaults(defineProps<Props>(), {

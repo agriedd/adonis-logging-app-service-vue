@@ -38,7 +38,7 @@ const submit = () => {
     >
       <div class="p-6 lg:p-10 lg:py-6 flex w-full flex-row-reverse items-center gap-4">
         <div
-          class="bg-zinc-900 rounded-full w-12 aspect-[3/4] border-b-2 border-zinc-700 flex justify-center items-center text-sky-800  fill-green-500 transition-all"
+          class="bg-zinc-900 rounded-full w-12 aspect-[3/4] border-b-2 border-zinc-700 flex justify-center items-center text-sky-800 fill-green-500 transition-all"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path
